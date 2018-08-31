@@ -1,0 +1,33 @@
+{
+  "betTypeMap": {
+    "cash": {
+      "release": {
+        "flavor": "pharaoh",
+        "ipa_from": "/Users/magicalwater/ArchiveExportPlist/GamePlatformCash/latest/GamePlatformCash.ipa",
+        "ipa_to": "pharaoh/platform/cash/ios/release/GamePlatformCash.ipa"
+      },
+      "debug": {
+        "flavor": "pharaoh_debug",
+        "ipa_from": "/Users/magicalwater/ArchiveExportPlist/GamePlatformCashDebug/latest/GamePlatformCashDebug.ipa",
+        "ipa_to": "pharaoh_debug/platform/cash/ios/release/GamePlatformCash.ipa"
+      },
+      "exp": {
+        "flavor": "pharaoh_exp",
+        "ipa_from": "/Users/magicalwater/ArchiveExportPlist/GamePlatformCashExp/latest/GamePlatformCashExp.ipa",
+        "ipa_to": "pharaoh_exp/platform/cash/ios/release/GamePlatformCash.ipa"
+      }
+    },
+    "credit": {
+      "release": {
+        "flavor": "pharaoh",
+        "ipa_from": "/Users/magicalwater/ArchiveExportPlist/GamePlatform/latest/GamePlatform.ipa",
+        "ipa_to": "pharaoh/platform/credit/ios/release/GamePlatform.ipa"
+      },
+      "debug": {
+        "flavor": "pharaoh_debug",
+        "ipa_from": "/Users/magicalwater/ArchiveExportPlist/GamePlatformDebug/latest/GamePlatformDebug.ipa",
+        "ipa_to": "pharaoh_debug/platform/credit/ios/release/GamePlatformDebug.ipa"
+      }
+    }
+  }
+}

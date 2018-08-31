@@ -1,0 +1,95 @@
+apply plugin: 'java-library'
+apply plugin: 'kotlin'
+apply plugin: 'kotlin-android-extensions'
+
+task runJar {
+    dependsOn jar
+    println "執行 jar task"
+    doLast {
+        println "執行 jar last"
+        javaexec {
+            main="-jar"
+            args = [
+                    "/Users/magicalwater/AndroidProject/AWSConnect/awsConnect/build/libs/awsConnect.jar"
+            ]
+        }
+    }
+}
+
+jar {
+    println "執行 Jar In"
+    manifest {
+        attributes 'Main-Class': 'com.pharaoh.aws.awsconnect.AWSConnect'
+    }
+
+    from {
+        (configurations.runtime).collect {
+            if (it != null && it.exists()) {
+                it.isDirectory() ? it : zipTree(it)
+            }
+        }
+    }
+
+}
+
+//添加源码中引入的非代码文件，例如资源等
+sourceSets.main.resources {
+    srcDirs = [
+            "src/main/java"
+    ]
+    include "s3Config.json"
+}
+
+sourceCompatibility = "1.8"
+targetCompatibility = "1.8"
+
+buildscript {
+    ext.kotlin_version = '1.2.41'
+    repositories {
+        mavenCentral()
+        jcenter()
+    }
+    dependencies {
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+    }
+}
+
+repositories {
+    mavenCentral()
+    jcenter()
+
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+
+    //kotlin
+    compile "org.jetbrains.kotlin:kotlin-stdlib-jre8:$kotlin_version"
+
+    //kotlin 當中的 anko
+    compile "org.jetbrains.anko:anko:$anko_version"
+    compile 'com.github.bumptech.glide:glide:3.8.0'
+
+    testCompile 'junit:junit:4.12'
+    //aws
+    compile 'com.amazonaws:aws-java-sdk:1.11.340'
+    //網路Lib
+    compile 'com.squareup.okhttp3:okhttp:3.8.1'
+    compile 'com.squareup.okio:okio:1.13.0'
+    //json
+    compile 'com.google.code.gson:gson:2.8.4'
+}
+
+compileKotlin {
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
+}
+compileTestKotlin {
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
+}
+
+
+//build.dependsOn(copyToLib)
